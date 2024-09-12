@@ -112,6 +112,18 @@ export default {
     actualizarFechasAMostrar() {
       this.$forceUpdate();  // Actualizar cuando se cambie el tamaño de pantalla
     },
+            // Método para limpiar todos los campos del formulario
+    limpiarCampos() {
+      this.cita = {
+        doctor_id: '',
+        nombre_cliente: '',
+        correo_cliente: '',
+        telefono_cliente: '',
+        notas: ''
+      };
+          this.horarioSeleccionado = null;  // Limpiar el horario seleccionado
+    },
+
 
     // Obtener doctores
     obtenerDoctores() {
@@ -145,7 +157,7 @@ export default {
           // Opcionalmente, ocultar el mensaje después de unos segundos
           setTimeout(() => {
             this.mensaje = '';
-             this.$router.go(0);
+            this.limpiarCampos();
           }, 3000);  // El mensaje desaparece después de 5 segundos
         })
         .catch(error => {
