@@ -145,7 +145,7 @@ export default {
           // Opcionalmente, ocultar el mensaje después de unos segundos
           setTimeout(() => {
             this.mensaje = '';
-            window.location.href = "https://citas-veterinarias-grupo4.netlify.app/citas";
+             this.$router.go(0);
           }, 3000);  // El mensaje desaparece después de 5 segundos
         })
         .catch(error => {
