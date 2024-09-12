@@ -145,7 +145,7 @@ export default {
           // Opcionalmente, ocultar el mensaje después de unos segundos
           setTimeout(() => {
             this.mensaje = '';
-            location.reload();
+            window.location.reload(true);
           }, 3000);  // El mensaje desaparece después de 5 segundos
         })
         .catch(error => {
