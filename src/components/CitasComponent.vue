@@ -112,19 +112,7 @@ export default {
     actualizarFechasAMostrar() {
       this.$forceUpdate();  // Actualizar cuando se cambie el tamaño de pantalla
     },
-        // Método para limpiar todos los campos del formulario
-    limpiarCampos() {
-      this.cita = {
-        doctor_id: '',
-        nombre_cliente: '',
-        correo_cliente: '',
-        telefono_cliente: '',
-        notas: ''
-      };
-      this.horarioSeleccionado = null;  // Limpiar el horario seleccionado
-    },
-
-
+ 
     // Obtener doctores
     obtenerDoctores() {
       fetch('https://examencortogrupo4.riegoautomatico.shop/api/public/api.php?action=obtenerDoctores')
@@ -157,7 +145,8 @@ export default {
           // Opcionalmente, ocultar el mensaje después de unos segundos
           setTimeout(() => {
             this.mensaje = '';
-            this.limpiarCampos();
+            window.location.href = "https://citas-veterinarias-grupo4.netlify.app";
+
           }, 3000);  // El mensaje desaparece después de 5 segundos
         })
         .catch(error => {
