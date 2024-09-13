@@ -1,12 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import CitasComponent from '@/components/CitasComponent.vue'
-import HomeView from '../views/HomeView.vue'
+import HomeComponent from '@/components/HomeComponent.vue'
 
 const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: HomeComponent
   },
   {
     path: '/citas',

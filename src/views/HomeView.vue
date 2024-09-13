@@ -2,7 +2,7 @@
     <nav>
     <router-link to="/citas">Generar Cita</router-link> 
   </nav>
-
+<HomeComponent></HomeComponent> 
 </template>
 
 <script>
