@@ -192,15 +192,12 @@ export default {
       const hoy = new Date();
       const diasSemana = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
       const promesas = [];
-
       for (let i = 0; i < 14; i++) {
         const fecha = new Date(hoy);
         fecha.setDate(hoy.getDate() + i);
         const diaNombre = diasSemana[fecha.getDay() - 1];
-
         if (diasTrabajo.includes(diaNombre)) {
-          const fechaString = fecha.toISOString().split('T')[0];
-
+          const fechaString = fecha.getFullYear()+'-'+(fecha.getMonth()+1)+'-'+fecha.getDate();
           // Obtener horarios ocupados para esa fecha
           const promesa = axios.get(`https://examencortogrupo4.riegoautomatico.shop/api/public/api.php?action=obtenerHorariosDoctor&doctor_id=${this.cita.doctor_id}&fecha_cita=${fechaString}`)
             .then(response => {
@@ -209,22 +206,21 @@ export default {
                 hora_fin: horario.hora_fin,
                 estado: horario.estado
               }));
-
               fechas.push({ fecha: fechaString, horarios, dia:diaNombre });
             })
             .catch(error => {
               console.error('Error verificando horarios ocupados:', error);
             });
-
           promesas.push(promesa);
         }
       }
-
           // Esperar que todas las solicitudes terminen y luego ordenar las fechas
       Promise.all(promesas).then(() => {
         this.fechasHorarios = fechas.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));  // Ordenar fechas
       });
     },
+
+
 
     // Seleccionar un horario, pero no mostrar ningún mensaje
     seleccionarHorario(fecha, horario) {
