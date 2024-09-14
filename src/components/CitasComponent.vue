@@ -28,7 +28,7 @@
         <select v-model="cita.doctor_id" @change="obtenerHorariosDoctor(cita.doctor_id)" class="form-select">
           <option value="" selected="true" >Selecciona un doctor</option>
           <option v-for="doctor in doctores" :key="doctor.id" :value="doctor.id">
-            {{ doctor.nombre }}
+           Nombre: {{ doctor.nombre }}           |        Especialidad: {{ doctor.especialidad }}    |       Teléfono: {{ doctor.telefono }}
           </option>
         </select>
       </div>
